@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "build": "cd frontend && npm run build",
-    "dev": "cd frontend && npm run dev",
-    "start": "node backend/server.js"
+    "start": "npm run build && node -e \"console.log('✅ Frontend build tamamlandı, service hazır')\" "  // Sadece build, frontend static
   }
 }

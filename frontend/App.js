@@ -11,10 +11,7 @@ function App() {
   useEffect(() => {
     socket.on('liveUpdate', (data) => {
       setMatch(data);
-      setChartData({
-        labels: data.chartLabels || ['1', '2', '3', '4', '5'],
-        datasets: [{ label: 'Home Odds', data: data.chartHome || [1.85, 1.88, 1.90, 1.92, 1.95], borderColor: '#10b981' }]
-      });
+      setChartData({ labels: data.chartLabels || ['1', '2', '3', '4', '5'], datasets: [{ label: 'Home Odds', data: data.chartHome || [1.85, 1.88, 1.90, 1.92, 1.95], borderColor: '#10b981' }] });
     });
     return () => socket.off();
   }, []);

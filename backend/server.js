@@ -4,7 +4,6 @@ const { Server } = require('socket.io');
 const grpc = require('@grpc/grpc-js');
 const protoLoader = require('@grpc/proto-loader');
 const path = require('path');
-require('dotenv').config();
 
 const app = express();
 const server = http.createServer(app);
@@ -33,10 +32,3 @@ function calculateLiveOdds(team1, team2) {
 
 server.listen(process.env.PORT || 3000, () => console.log('✅ Railway service ready'));
 io.on('connection', socket => console.log('🔥 Canlı maç izleyici bağlandı'));
-
-// GRPC endpoint
-const grpcServer = new grpc.Server();
-grpcServer.addService(bettingProto.BettingService, bettingService);
-grpcServer.bindAsync('0.0.0.0:50051', grpc.ServerCredentials.createInsecure(), () => {
-  console.log('✅ gRPC server started on 50051');
-});

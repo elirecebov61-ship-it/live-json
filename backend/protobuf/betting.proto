@@ -1,0 +1,6 @@
+syntax = "proto3";
+service BettingService {
+  rpc GetOdds(Team) returns (Odds);
+}
+message Team { string team1 = 1; string team2 = 1; }
+message Odds { float home = 1; float away = 1; float draw = 1; float updatedAt = 2; }
